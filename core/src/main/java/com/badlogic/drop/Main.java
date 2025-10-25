@@ -64,6 +64,11 @@ public class Main implements ApplicationListener {
 //        creating Rectangle objects for the bucket and the drop for the purpose of collision detection
         bucketRectangle = new Rectangle();
         dropRectangle = new Rectangle();
+
+//        setting continuous music
+        music.setLooping(true);
+        music.setVolume(.5f);
+        music.play();
     }
 
     @Override
@@ -157,6 +162,7 @@ public class Main implements ApplicationListener {
             if (dropSprite.getY() < -dropHeight) dropSprites.removeIndex(i);
             else if (bucketRectangle.overlaps(dropRectangle)) { // check if the drop overlaps the bucket
                 dropSprites.removeIndex(i);
+                dropSound.play(); // play the sound when the bucket meets the drop
             }
         }
 
